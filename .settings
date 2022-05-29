@@ -1,0 +1,4 @@
+{
+  [ "shell.allow_disk_startup" ] = false,
+  [ "motd.enable" ] = false,
+}
