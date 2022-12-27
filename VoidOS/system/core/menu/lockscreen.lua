@@ -9,7 +9,7 @@ term.setCursorPos(11,4)
 local username = read()
 term.setCursorPos(11,5)
 local password = read("*")
-if fs.exists("VoidOS/users/"..username) then
+if fs.exists("VoidOS/users/"..username) and not fs.isDir("VoidOS/users/"..username) then
     local hashedPassword = sha.hash256(password)
     local file = fs.open("VoidOS/users/"..username,"r")
     local data = file.readAll()
