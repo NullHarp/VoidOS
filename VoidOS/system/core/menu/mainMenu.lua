@@ -18,6 +18,7 @@ local toolsMenuOptions = {
 
     "File Transfer",
     "New Account  ",
+    "Update       ",
     "Back         "
 }
 
@@ -72,6 +73,8 @@ while true do
         elseif selected == 2 then
             shell.run("/VoidOS/system/programs/tools/newAccount")
         elseif selected == 3 then
+            shell.run("/VoidOS/system/programs/tools/update")
+        elseif selected == 4 then
             toolsMenu.setVisible(false)
             currentMenu.menu = mainMenu currentMenu.title = "Main Menu" menuOptions = mainMenuOptions
             mainMenu.setVisible(true)

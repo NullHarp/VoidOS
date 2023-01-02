@@ -14,6 +14,7 @@ local fileToGet = {
     "VoidOS/system/core/menu/mainMenu.lua",
     "VoidOS/system/programs/tools/fileTransfer.lua",
     "VoidOS/system/programs/tools/newAccount.lua",
+    "VoidOS/system/programs/tools/update.lua",
     "VoidOS/users/user"
 }
 
