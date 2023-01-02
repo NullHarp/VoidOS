@@ -59,8 +59,9 @@ local function exit()
     while true do
         local event, key, is_held = os.pullEvent("key")
         if key == keys.rightShift then
-            shell.run("/VoidOS/system/core/menu/mainMenu tool")
+            return
         end
     end
 end
 parallel.waitForAny(createAccount,exit)
+shell.run("/VoidOS/system/core/menu/mainMenu tool")
