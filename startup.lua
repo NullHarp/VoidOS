@@ -1,1 +1,1 @@
---shell.run("VoidOS/system/core/init.lua")
+shell.run("VoidOS/system/core/init.lua")
