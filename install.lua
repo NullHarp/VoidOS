@@ -13,7 +13,8 @@ local fileToGet = {
     "VoidOS/system/core/menu/lockscreen.lua",
     "VoidOS/system/core/menu/mainMenu.lua",
     "VoidOS/system/programs/tools/fileTransfer.lua",
-    "VoidOS/system/programs/tools/newAccount.lua"
+    "VoidOS/system/programs/tools/newAccount.lua",
+    "VoidOS/users/user"
 }
 
 print("Confirm VoidOS install? Y/N")
@@ -50,4 +51,4 @@ if string.find(response,"y") then
     fileHandle.write(data)
     file.close()
 end
-print("Install complete, enjoy!")
+print("Install complete, default username and password is user")
