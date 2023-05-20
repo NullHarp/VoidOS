@@ -114,7 +114,7 @@ local function browseFiles(directory)
             createNewDirectory(directory)
         else
             local selectedItem = menuOptions[selected]
-            local itemPath = directory .. selectedItem
+            local itemPath = directory .."/"..selectedItem
 
             if fs.isDir(itemPath) then
                 local submenuOptions = {"Open", "Delete"}
