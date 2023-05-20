@@ -1,4 +1,6 @@
-local version = "V0"
+local version = "V0.1.0"
+local user = "User"
+
 
 function getLabel()
     if os.getComputerLabel() == nil then
@@ -14,9 +16,9 @@ function title(text)
     term.setTextColor(colors.yellow)
     term.write("VoidOS "..version.." | Label: "..getLabel().." | ID: "..os.getComputerID())
     term.setCursorPos(1,2)
-    term.write(text)
+    term.write(text.." | "..user)
     term.setTextColor(colors.white)
     term.setCursorPos(1,4)
 end
 
-return {version = version, title = title}
+return {version = version, title = title} 

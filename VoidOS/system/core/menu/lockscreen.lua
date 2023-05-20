@@ -5,10 +5,13 @@ util.title("Lockscreen")
 term.write("Username: ")
 term.setCursorPos(1,5)
 term.write("Password: ")
+
 term.setCursorPos(11,4)
 local username = read()
+
 term.setCursorPos(11,5)
 local password = read("*")
+
 if fs.exists("VoidOS/users/"..username) and not fs.isDir("VoidOS/users/"..username) then
     local hashedPassword = sha.hash256(password)
     local file = fs.open("VoidOS/users/"..username,"r")
@@ -16,14 +19,14 @@ if fs.exists("VoidOS/users/"..username) and not fs.isDir("VoidOS/users/"..userna
     if hashedPassword == data then
         util.title("Lockscreen")
         print("Access Granted")
-        sleep(2)
+        sleep(0.75)
         shell.run("/VoidOS/system/core/menu/mainMenu")
     else
         util.title("Lockscreen")
         term.setTextColor(colors.red)
         textutils.slowPrint("Incorrect Username or Password",15)
         term.setTextColor(colors.white)
-        sleep(2)
+        sleep(0.75)
         shell.run("/VoidOS/system/core/menu/lockscreen")
     end
 else
@@ -31,6 +34,6 @@ else
     term.setTextColor(colors.red)
     textutils.slowPrint("Incorrect Username or Password",15)
     term.setTextColor(colors.white)
-    sleep(2)
+    sleep(0.75)
     shell.run("/VoidOS/system/core/menu/lockscreen")
 end

@@ -1,6 +1,6 @@
 local menuAPI = require("/VoidOS/system/core/api/menu")
 
-local menuStart = ...
+local menuStart,user = ...
 
 local mainMenuOptions = {
     "Programs",
@@ -16,6 +16,7 @@ local programsMenuOptions = {
 
 local toolsMenuOptions = {
 
+    "File Explorer",
     "File Transfer",
     "New Account  ",
     "Update       ",
@@ -69,12 +70,14 @@ while true do
         end
     elseif currentMenu.menu == toolsMenu then
         if selected == 1 then
-            shell.run("/VoidOS/system/programs/tools/fileTransfer")
+            shell.run("/VoidOS/system/programs/tools/fileExplorer")
         elseif selected == 2 then
-            shell.run("/VoidOS/system/programs/tools/newAccount")
+            shell.run("/VoidOS/system/programs/tools/fileTransfer")
         elseif selected == 3 then
-            shell.run("/VoidOS/system/programs/tools/update")
+            shell.run("/VoidOS/system/programs/tools/newAccount")
         elseif selected == 4 then
+            shell.run("/VoidOS/system/programs/tools/update")
+        elseif selected == 5 then
             toolsMenu.setVisible(false)
             currentMenu.menu = mainMenu currentMenu.title = "Main Menu" menuOptions = mainMenuOptions
             mainMenu.setVisible(true)

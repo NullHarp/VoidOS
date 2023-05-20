@@ -5,6 +5,14 @@ util.title("New Account")
 local x,y = term.getSize()
 
 -- Functions
+local function newSalt()
+    local salt = ""
+    for i = 1, 16 do
+        salt = salt+string.char(math.random(1,255))
+    end
+    return salt
+end
+
 local function createAccount()
     local function newPassword()
         util.title("New Account")
@@ -22,15 +30,18 @@ local function createAccount()
         password = read("*")
         term.setCursorPos(18,6)
         retypePassword = read("*")
-        
     end
+
     newPassword()
     while not successfulAccount do
         if not fs.exists("/VoidOS/users/"..username) then
             if password == retypePassword then
-                hashedPassword = sha.hash256(password)
+                salt = newSalt()
+                hashedPassword = sha.hash256(password..salt)
                 local user = fs.open("/VoidOS/users/"..username,"w")
-                user.write(hashedPassword)
+                tbl = {hashedPassword,salt}
+                data = textutils.serialiseJSON(tbl)
+                user.write(data)
                 user.close()
                 print("Account Created")
                 sleep(1)
@@ -63,5 +74,6 @@ local function exit()
         end
     end
 end
+
 parallel.waitForAny(createAccount,exit)
 shell.run("/VoidOS/system/core/menu/mainMenu tool")

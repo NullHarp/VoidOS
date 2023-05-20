@@ -21,7 +21,13 @@ function runMenu(menuOptions,menuTerm,x,y,titleText)
             term.setCursorPos(x,y)
             term.clearLine()
             if index == selected then
-                term.write("[ "..value.." ]")
+                term.setTextColor(colors.red)
+                term.write("[ ")
+                term.setTextColor(colors.lightGray)
+                term.write(value)
+                term.setTextColor(colors.red)
+                term.write(" ]")
+                term.setTextColor(colors.white)
             else
                 term.write("  "..value.."  ")
             end

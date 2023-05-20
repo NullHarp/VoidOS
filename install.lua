@@ -1,3 +1,5 @@
+local githubPath = "https://raw.githubusercontent.com/NullHarp/VoidOS/master/"
+
 local dirToMake = {
     "VoidOS/system/core/api",
     "VoidOS/system/core/menu",
@@ -12,6 +14,7 @@ local fileToGet = {
     "VoidOS/system/core/api/util.lua",
     "VoidOS/system/core/menu/lockscreen.lua",
     "VoidOS/system/core/menu/mainMenu.lua",
+    "VoidOS/system/programs/tools/fileExplorer.lua",
     "VoidOS/system/programs/tools/fileTransfer.lua",
     "VoidOS/system/programs/tools/newAccount.lua",
     "VoidOS/system/programs/tools/update.lua",
@@ -32,8 +35,8 @@ for i,path in pairs(dirToMake) do
     print("Created path: "..path)
 end
 
+
 for i,path in pairs(fileToGet) do
-    local githubPath = "https://raw.githubusercontent.com/NullHarp/VoidOS/master/"
     local file = http.get(githubPath..path)
     local data = file.readAll()
     local fileHandle = fs.open(path,"w")

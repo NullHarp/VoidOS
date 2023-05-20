@@ -1,4 +1,6 @@
 local util = require("/VoidOS/system/core/api/util")
+local githubPath = "https://raw.githubusercontent.com/NullHarp/VoidOS/master/"
+
 util.title("Updater")
 
 print("Confirm VoidOS update? Y/N")
@@ -20,13 +22,13 @@ local fileToGet = {
     "VoidOS/system/core/api/util.lua",
     "VoidOS/system/core/menu/lockscreen.lua",
     "VoidOS/system/core/menu/mainMenu.lua",
+    "VoidOS/system/programs/tools/fileExplorer.lua",
     "VoidOS/system/programs/tools/fileTransfer.lua",
     "VoidOS/system/programs/tools/newAccount.lua",
     "VoidOS/system/programs/tools/update.lua"
 }
 
 for i,filePath in pairs(fileToGet) do
-    local githubPath = "https://raw.githubusercontent.com/NullHarp/VoidOS/master/"
     local file = fs.open(filePath,"r")
     local fileData = file.readAll()
     local fileHandle = http.get(githubPath..filePath)
