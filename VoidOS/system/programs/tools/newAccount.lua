@@ -4,15 +4,6 @@ util.title("New Account")
 
 local x,y = term.getSize()
 
--- Functions
-local function newSalt()
-    local salt = ""
-    for i = 1, 16 do
-        salt = salt+string.char(math.random(1,255))
-    end
-    return salt
-end
-
 local function createAccount()
     local function newPassword()
         util.title("New Account")
@@ -36,12 +27,9 @@ local function createAccount()
     while not successfulAccount do
         if not fs.exists("/VoidOS/users/"..username) then
             if password == retypePassword then
-                salt = newSalt()
-                hashedPassword = sha.hash256(password..salt)
+                hashedPassword = sha.hash256(password)
                 local user = fs.open("/VoidOS/users/"..username,"w")
-                tbl = {hashedPassword,salt}
-                data = textutils.serialiseJSON(tbl)
-                user.write(data)
+                user.write(hashedPassword)
                 user.close()
                 print("Account Created")
                 sleep(1)
